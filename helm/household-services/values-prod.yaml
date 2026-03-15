@@ -1,0 +1,10 @@
+replicaCount:
+  backend: 3
+  frontend: 3
+
+backend:
+  env:
+    FLASK_ENV: production
+
+ingress:
+  host: household.local

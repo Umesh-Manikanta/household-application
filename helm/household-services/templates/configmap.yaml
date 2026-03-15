@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  FLASK_APP: {{ .Values.backend.env.FLASK_APP }}
+  FLASK_ENV: {{ .Values.backend.env.FLASK_ENV }}
+  DATABASE_URL: postgresql://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ .Release.Name }}-postgresql:5432/{{ .Values.postgresql.auth.database }}
+  CORS_ORIGINS: "http://{{ .Values.ingress.host }}"

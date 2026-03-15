@@ -1,0 +1,10 @@
+replicaCount:
+  backend: 2
+  frontend: 2
+
+backend:
+  env:
+    FLASK_ENV: production
+
+ingress:
+  host: staging.household.local
