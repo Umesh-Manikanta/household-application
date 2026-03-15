@@ -18,7 +18,14 @@ def create_app(env="development"):
 
     # Register blueprints
     from routes.auth import auth_bp
+    from routes.admin import admin_bp
+    from routes.customer import customer_bp
+    from routes.professional import professional_bp
+
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
+    app.register_blueprint(admin_bp, url_prefix="/api/admin")
+    app.register_blueprint(customer_bp, url_prefix="/api/customer")
+    app.register_blueprint(professional_bp, url_prefix="/api/professional")
 
     @app.route("/api/health")
     def health():
