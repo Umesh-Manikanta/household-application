@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from extensions import db
-from models import User, ServiceRequest, Review
+from models import User, ServiceRequest, Review, Service
 from routes.decorators import professional_required
 from flask_jwt_extended import get_jwt_identity
 from datetime import datetime
@@ -16,10 +16,10 @@ def get_requests():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
 
-    # Show unassigned requests matching professional's service type
-    # plus requests already assigned to this professional
+    # Show only requests matching professional's service type
     available = ServiceRequest.query.join(ServiceRequest.service).filter(
-        ServiceRequest.status == "requested"
+        ServiceRequest.status == "requested",
+        Service.name == user.service_type
     ).all()
 
     assigned = ServiceRequest.query.filter_by(
