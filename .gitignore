@@ -1,6 +1,8 @@
+# Python
 backend/venv/
-backend/__pycache__/
-backend/*.pyc
+**/__pycache__/
+**/*.pyc
+**/*.pyo
 backend/.env
 backend/instance/
 
@@ -12,3 +14,4 @@ frontend/dist/
 .DS_Store
 Thumbs.db
 *.env
+.env
